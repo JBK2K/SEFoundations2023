@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block title %}EUROJACKPOT{% endblock %} {% block
+body %}
+
+
+    {% for key  in lottonr.keys() %}
+    <h2>{{key}}</h2>
+    <a href="/eurojackpot/{{key}}">{{key}}</a>
+
+
+{% endfor %}
+{% endblock %}

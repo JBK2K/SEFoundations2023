@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+    <title>{%block title%}{%endblock%}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../static/css/base.css" rel="stylesheet" />
+    <link href="FoundationsHandIns/JS/burger.js" />
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <a class="brand" href="home">24</a>
+        <ul class="navmenu">
+          <li class="navitem"><a class="navlink" href="eurojackpot">Eurojackpot</a></li>
+          <li class="navitem">
+            <a class="navlink" href="about">About</a>
+          </li>
+          <li class="navitem">
+            <a class="navlink" href="contact">Contact</a>
+          </li>
+          <li class="navitem">
+            <a class="navlink" href="login">Log in</a>
+          </li>
+        </ul>
+
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </nav>
+    </header>
+    {% block body %} {% endblock %}
+  </body>
+  <script src="../static/burger.js"></script>
+</html>
