@@ -41,12 +41,11 @@ def eurojackpot(day):
     return render_template(
         'eurojackpotresult.html', 
         mainnr=(lottonr[day]['main']),
-        supernr=(lottonr[day]['super'])
+        supernr=(lottonr[day]['super']),
+        day1 = day
         )
-    # if day in lottonr.keys():
-    #     return '<h1>' + 'NORMAL:'+ str(lottonr[day]['main']) + str(lottonr[day]['super'])+'</h1>' 
-    # else:
-    #     return '<h1>' + 'ERROR BITCH' + '</h1>'
+
 if __name__ == '__main__':
     app.run()
+
     

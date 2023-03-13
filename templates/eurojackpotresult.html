@@ -1,8 +1,16 @@
 {% extends 'base.html' %} {% block title %}RESULT{% endblock %} 
 
+{% block head %}
+  {{ super() }}
+  <link href="../static/css/eurojackpotresult.css" rel="stylesheet" />
+{% endblock %}
+
 {%block body%}
 
+
+<h1>RESULT:{{(day1).capitalize()}}</h1>
 <h1>MAIN NUMBERS:{{mainnr}}</h1>
 <h1>SUPER NUMBERS:{{supernr}}</h1>
+
 
 {% endblock %}

@@ -1,10 +1,18 @@
-{% extends 'base.html' %} {% block title %}EUROJACKPOT{% endblock %} {% block
-body %}
+{% extends 'base.html' %} {% block title %}EUROJACKPOT{% endblock %} 
 
+{% block head %}
+  {{ super() }}
+  <link href="../static/css/eurojackpot.css" rel="stylesheet" />
+{% endblock %}
 
+{% block body %}
+
+    <h1>Results by day</h1>
     {% for key  in lottonr.keys() %}
-    <h2>{{key}}</h2>
-    <a href="/eurojackpot/{{key}}">{{key}}</a>
+    <div class='test'>
+    <h2>{{key.capitalize()}}</h2>
+    <a class='links' href="/eurojackpot/{{key}}">{{key}}</a>
+    </div>
 
 
 {% endfor %}
