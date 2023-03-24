@@ -3,7 +3,7 @@
 {% block title %}Login{% endblock %}
 {% block head %}
   {{ super() }}
-  <link href="../static/css/login.css" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}

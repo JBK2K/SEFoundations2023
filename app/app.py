@@ -1,7 +1,7 @@
 from flask import Flask, redirect, url_for, render_template
 
 from . import dynlottonr
-# from . import simple_pages
+from . import simple_pages
 
 
 def create_app():
@@ -14,7 +14,7 @@ def create_app():
 
 # Blueprints
 def register_blueprints(app: Flask):
-  # app.register_blueprint(dynlottonr.routes.blueprint)
+  app.register_blueprint(dynlottonr.routes.blueprint)
   app.register_blueprint(simple_pages.routes.blueprint)
 
 

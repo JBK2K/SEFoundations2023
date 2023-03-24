@@ -5,26 +5,26 @@
     <title>{%block title%}{%endblock%}</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="../static/css/base.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/base.css') }}" rel="stylesheet" />
     <link href="FoundationsHandIns/JS/burger.js" />
     {% endblock %}
   </head>
   <body>
     <header>
       <nav class="navbar">
-        <a class="brand" href="http://127.0.0.1:5000/">24</a>
+        <a class="brand" href="{{ url_for('simple_pages.landingpage') }}">24</a>
         <ul class="navmenu">
           <li class="navitem">
-            <a class="navlink" href="http://127.0.0.1:5000/eurojackpot">Eurojackpot</a>
+            <a class="navlink" href="{{ url_for('eurojackpot.lotto') }}">Eurojackpot</a>
           </li>
           <li class="navitem">
-            <a class="navlink" href="http://127.0.0.1:5000/about">About</a>
+            <a class="navlink" href="{{ url_for('simple_pages.about') }}">About</a>
           </li>
           <li class="navitem">
-            <a class="navlink" href="http://127.0.0.1:5000/contact">Contact</a>
+            <a class="navlink" href="{{ url_for('simple_pages.contact') }}">Contact</a>
           </li>
           <li class="navitem">
-            <a class="navlink" href="http://127.0.0.1:5000/login">Log in</a>
+            <a class="navlink" href="{{ url_for('simple_pages.login') }}">Log in</a>
           </li>
         </ul>
 
@@ -37,5 +37,5 @@
     </header>
     {% block body %} {% endblock %}
   </body>
-  <script src="../static/burger.js"></script>
+  <script src="{{ url_for('static', filename='burger.js') }}"></script>
 </html>

@@ -2,7 +2,7 @@
 
 {% block head %}
   {{ super() }}
-  <link href="../static/css/eurojackpot.css" rel="stylesheet" />
+  <link href="{{ url_for('static', filename='css/eurojackpot.css') }}" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
@@ -11,7 +11,9 @@
     {% for key  in lottonr.keys() %}
     <div class='test'>
     <h2>{{key.capitalize()}}</h2>
-    <a class='links' href="/eurojackpot/{{key}}">{{key}}</a>
+    <a class='links' href="{{url_for('eurojackpot.eurojackpot', day=key)}}">{{key}}</a> 
+    
+
     </div>
 {% endfor %}
 {% endblock %}
