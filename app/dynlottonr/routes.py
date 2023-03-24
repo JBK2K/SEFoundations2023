@@ -1,7 +1,5 @@
 from flask import Blueprint, render_template
-blueprint = Blueprint('eurjackpot', __name__)
-
-
+blueprint = Blueprint('eurojackpot', __name__)
 
 lottonr = {
   'monday' : {'main':[3,8,24,21,22 ] , 'super': [1,6]},
