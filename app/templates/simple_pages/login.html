@@ -1,0 +1,47 @@
+{% extends 'simple_pages/base.html' %}
+
+{% block title %}Login{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link href="../static/css/login.css" rel="stylesheet" />
+{% endblock %}
+
+{% block body %}
+    <div class="login-screen">
+      <div class="app-title">
+        <img
+          class="logo2"
+          src="https://drive.google.com/uc?export=view&id=1EfrjITRzCrElKJ7nnQ34dKFBI036mR0F"
+        />
+        <h1>Log in</h1>
+      </div>
+      <div class="login-form">
+        <form action="" method="post">
+          <div class="control-group">
+            <input
+              type="text"
+              class="login-field"
+              name="username"
+              placeholder="Username"
+              id="login-name"
+            />
+            <label class="login-field-icon fui-user" for="login-name"></label>
+          </div>
+          <div class="control-group">
+            <input
+              type="password"
+              class="login-field"
+              name="password"
+              placeholder="Password"
+              id="login-pass"
+            />
+            <label class="" for=""></label>
+          </div>
+          <div class="link">
+            <a class="register" href="">Register</a>
+            <button type="submit" class="login">Log in</button>
+          </div>
+        </form>
+      </div>
+    </div>
+{%endblock%}
