@@ -1,19 +1,19 @@
-{% extends 'simple_pages/base.html' %} {% block title %}EUROJACKPOT{% endblock %} 
+{% extends 'simple_pages/base.html' %} {% block title %}EUROJACKPOT{% endblock
+%} {% block head %} {{ super() }}
+<link
+  href="{{ url_for('static', filename='css/eurojackpot.css') }}"
+  rel="stylesheet"
+/>
+{% endblock %} {% block body %}
 
-{% block head %}
-  {{ super() }}
-  <link href="{{ url_for('static', filename='css/eurojackpot.css') }}" rel="stylesheet" />
-{% endblock %}
-
-{% block body %}
-
-    <h1>Results by day</h1>
-    {% for key  in lottonr.keys() %}
-    <div class='test'>
-    <h2>{{key.capitalize()}}</h2>
-    <a class='links' href="{{url_for('eurojackpot.eurojackpot', day=key)}}">{{key}}</a> 
-    
-
-    </div>
-{% endfor %}
-{% endblock %}
+<h1>Results by day</h1>
+{% for lotto in lottonr %}
+<div class="test">
+  <h2>{{lotto.day.capitalize()}}</h2>
+  <a
+    class="links"
+    href="{{url_for('eurojackpot.eurojackpot', day=lotto.day)}}"
+    >{{lotto.day.capitalize()}}</a
+  >
+</div>
+{% endfor %} {% endblock %}
