@@ -1,0 +1,24 @@
+.userticket {
+  /* put in middle flext  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 15px;
+  /* end middle flex */
+}
+
+.userticket > input {
+  width: 20%;
+  margin: 5px;
+}
+
+.userticket > label {
+  color: violet;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.userticket > select {
+  margin-bottom: 20px;
+}

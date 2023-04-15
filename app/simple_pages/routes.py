@@ -11,15 +11,13 @@ def landingpage():
 # def home():
 #     return redirect('http://127.0.0.1:5000/')
 
-# route only login 
+# route only login
+
+
 @blueprint.route('/login')
 def login():
     return render_template('simple_pages/login.html')
 
-#only underconstruktion
-@blueprint.route('/contact')
-def contact():
-    return render_template('simple_pages/contact.html')
 
 @blueprint.route('/about')
 def about():

@@ -1,0 +1,42 @@
+{% extends 'simple_pages/base.html' %} {% block title %}Tickets{% endblock %} {%
+block head %} {{ super() }}
+<link
+  href="{{ url_for('static', filename='css/usertickets.css') }}"
+  rel="stylesheet"
+/>
+
+{% endblock %} {%block body %}
+
+<form
+  class="userticket"
+  method="POST"
+  action="{{ url_for('ticket_form.post_tickets') }}"
+>
+  <label for="playday">Playday of Lotto:</label><br />
+  <select id="playday" name="playday">
+    <option value="Monday">Monday</option>
+    <option value="Tuesday">Tuesday</option>
+    <option value="Wednesday">Wednesday</option>
+    <option value="Thursday">Thursday</option>
+    <option value="Friday">Friday</option>
+    <option value="Saturday">Saturday</option>
+    <option value="Sunday">Sunday</option></select
+  ><br />
+
+  <label for="main-numbers">Main Numbers:</label><br />
+  <input type="number" id="main1" name="main1" min="1" max="50" /><br />
+  <input type="number" id="main2" name="main2" min="1" max="50" /><br />
+  <input type="number" id="main3" name="main3" min="1" max="50" /><br />
+  <input type="number" id="main4" name="main4" min="1" max="50" /><br />
+  <input type="number" id="main5" name="main5" min="1" max="50" /><br />
+
+  <label for="super-numbers">Super Numbers:</label><br />
+  <input type="number" id="super1" name="super1" min="1" max="12" /><br />
+  <input type="number" id="super2" name="super2" min="1" max="12" /><br />
+
+  <input type="submit" value="Submit" />
+
+</form>
+<script src="/static/ticketvalidation.js"></script>
+
+{% endblock %}

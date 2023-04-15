@@ -7,13 +7,29 @@
 {% endblock %} {% block body %}
 
 <h1>Results by day</h1>
-{% for lotto in lottonr %}
+{% for lotto in lottonr_paginated %}
+<!-- klappt nur ohhne .items.. -->
 <div class="test">
   <h2>{{lotto.day.capitalize()}}</h2>
-  <a
-    class="links"
-    href="{{url_for('eurojackpot.eurojackpot', day=lotto.day)}}"
+  <a class="links" href="{{url_for('eurojackpot.eurojackpot', day=lotto.day)}}"
     >{{lotto.day.capitalize()}}</a
   >
+  {% endfor %}
 </div>
-{% endfor %} {% endblock %}
+<div class="pageselector">
+  {% if lottonr_paginated.prev_num %}
+  <a href="/eurojackpot?page={{ lottonr_paginated.prev_num }}">Previous Page</a>
+  {% else %}
+  <span>Previous Page</span>
+  {% endif %}
+
+  <span> - </span>
+
+  {% if lottonr_paginated.next_num %}
+  <a href="/eurojackpot?page={{ lottonr_paginated.next_num }}">Next Page</a>
+  {% else %}
+  <span>Next Page</span>
+  {% endif %}
+</div>
+
+{% endblock %}
