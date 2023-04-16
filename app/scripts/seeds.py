@@ -1,10 +1,10 @@
-from app.app import create_app
-from app.dynlottonr.models import Lottoresults, Main, Super, User, Usertickets
-from app.extensions.database import db
+# from app.app import create_app
+# from app.dynlottonr.models import Lottoresults, Main, Super, User, Usertickets
+# from app.extensions.database import db
 
-if __name__ == '__main__':
-    app = create_app()
-    app.app_context().push()
+# if __name__ == '__main__':
+#     app = create_app()
+#     app.app_context().push()
 
 lottonr = {
     'monday': {'main': [3, 8, 24, 21, 22], 'super': [1, 6]},
