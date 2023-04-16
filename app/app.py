@@ -7,12 +7,12 @@ from . import dynlottonr
 from . import simple_pages
 from . import store_tickets
 
+# fragen wie das mit env./ config.py und sql url laeuft ..
+
 
 def create_app():
     app = Flask(__name__)
-    # app.config.from_object('app.config')
-    # ersetzt das drueber weil nicht geklappt hat
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+    app.config.from_object('app.config')
 
     register_blueprints(app)
     register_extensions(app)
