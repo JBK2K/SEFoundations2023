@@ -19,8 +19,8 @@ block head %} {{ super() }}
         <input
           type="text"
           class="login-field"
-          name="username"
-          placeholder="Username"
+          name="email"
+          placeholder="Email"
           id="login-name"
         />
         <label class="login-field-icon fui-user" for="login-name"></label>
@@ -36,7 +36,9 @@ block head %} {{ super() }}
         <label class="" for=""></label>
       </div>
       <div class="link">
-        <a class="register" href="">Register</a>
+        <a class="register" href="{{ url_for('user_login.get_register') }}"
+          >Register</a
+        >
         <button type="submit" class="login">Log in</button>
       </div>
     </form>

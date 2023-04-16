@@ -6,6 +6,7 @@ from app.extensions.database import db, migrate
 from . import dynlottonr
 from . import simple_pages
 from . import store_tickets
+from . import user_login
 
 # fragen wie das mit env./ config.py und sql url laeuft ..
 
@@ -26,6 +27,7 @@ def register_blueprints(app: Flask):
     app.register_blueprint(dynlottonr.routes.blueprint)
     app.register_blueprint(simple_pages.routes.blueprint)
     app.register_blueprint(store_tickets.routes.blueprint)
+    app.register_blueprint(user_login.routes.blueprint)
 
 
 def register_extensions(app: Flask):

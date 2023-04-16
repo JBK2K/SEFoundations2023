@@ -14,11 +14,6 @@ def landingpage():
 # route only login
 
 
-@blueprint.route('/login')
-def login():
-    return render_template('simple_pages/login.html')
-
-
 @blueprint.route('/about')
 def about():
     return render_template('simple_pages/about.html')

@@ -5,11 +5,11 @@ from app.extensions.database import db
 
 blueprint = Blueprint('ticket_form', __name__)
 
-user_dict = {
-    'name': 'Max',
-    'mail': 'max.meier@gmail.com',
-    'password': '56789000'
-}
+# user_dict = {
+#     'name': 'Max',
+#     'mail': 'max.meier@gmail.com',
+#     'password': '56789000'
+# }
 
 
 @blueprint.get('/tickets')
@@ -24,9 +24,9 @@ def post_tickets():
     # print the form data to the terminal
     print(request.form)
 
-    user = User(
-        name=user_dict['name'], mail=user_dict['mail'], password=user_dict['password'])
-    user.save()
+    # user = User(
+    #     name=user_dict['name'], mail=user_dict['mail'], password=user_dict['password'])
+    # user.save()
 
     main = Main(nr1=request.form['main1'], nr2=request.form['main2'],
                 nr3=request.form['main3'], nr4=request.form['main4'], nr5=request.form['main5'])

@@ -5,6 +5,7 @@ block head %} {{ super() }}
   rel="stylesheet"
 />
 {% endblock %} {% block body %}
+
 <div class="login-screen">
   <div class="app-title">
     <img
@@ -21,9 +22,19 @@ block head %} {{ super() }}
           class="login-field"
           name="username"
           placeholder="Username"
-          id="login-name"
+          id="login-username"
         />
-        <label class="login-field-icon fui-user" for="login-name"></label>
+        <label class="login-field-icon fui-user" for="login-username"></label>
+      </div>
+      <div class="control-group">
+        <input
+          type="text"
+          class="login-field"
+          name="email"
+          placeholder="Email"
+          id="login-email"
+        />
+        <label class="login-field-icon fui-user" for="login-email"></label>
       </div>
       <div class="control-group">
         <input
@@ -36,10 +47,10 @@ block head %} {{ super() }}
         <label class="" for=""></label>
       </div>
       <div class="link">
-        <a class="register" href="">Register</a>
-        <button type="submit" class="login">Log in</button>
+        <button type="submit" class="login">Register</button>
       </div>
     </form>
   </div>
 </div>
+
 {%endblock%}
