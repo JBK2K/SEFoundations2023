@@ -8,7 +8,7 @@ blueprint = Blueprint('ticket_form', __name__)
 user_dict = {
     'name': 'Max',
     'mail': 'max.meier@gmail.com',
-    'password': '567890'
+    'password': '56789000'
 }
 
 
