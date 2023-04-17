@@ -32,6 +32,7 @@ def eurojackpot(day):
     )
 
 
+# store data in db.
 @blueprint.route('/run-seed')
 def run_seed():
     if not Lottoresults.query.filter_by(day='monday').first():
