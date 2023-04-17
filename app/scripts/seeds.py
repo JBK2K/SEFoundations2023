@@ -1,10 +1,10 @@
-# from app.app import create_app
-# from app.dynlottonr.models import Lottoresults, Main, Super, User, Usertickets
-# from app.extensions.database import db
+from app.app import create_app
+from app.dynlottonr.models import Lottoresults, Main, Super, User, Usertickets
+from app.extensions.database import db
 
-# if __name__ == '__main__':
-#     app = create_app()
-#     app.app_context().push()
+if __name__ == '__main__':
+    app = create_app()
+    app.app_context().push()
 
 lottonr = {
     'monday': {'main': [3, 8, 24, 21, 22], 'super': [1, 6]},
@@ -15,6 +15,8 @@ lottonr = {
     'saturday': {'main': [3, 7, 16, 19, 29], 'super': [9, 12]},
     'sunday': {'main': [3, 7, 16, 19, 29], 'super': [9, 12]}, }
 print(lottonr)
+print('Hello World')
+
 
 # def seed():
 #     for day, numbers in lottonr.items():
@@ -23,13 +25,33 @@ print(lottonr)
 #         super = Super(nr1=numbers['super'][0], nr2=numbers['super'][1])
 #         main.save()
 #         super.save()
-#         print(main.id)
 #         lotto = Lottoresults(day=day, mainnr_id=main.id, supernr_id=super.id)
 
 #         lotto.save()
-
-
+#         print('saved to backend')
 # seed()
+
+# for all entries in lottoresuls and related table main and super delete them
+def delete():
+    up = Lottoresults.query.all()
+    for item in up:
+        item.delete()
+    print('success!')
+
+    main = Main.query.all()
+    for item in main:
+        item.delete()
+    print('success!')
+
+    super = Super.query.all()
+    for item in super:
+        item.delete()
+    print('success!')
+
+
+delete()
+
+
 # def test():
 #     playday = 'highday'
 #     main = Main(nr1=1, nr2=2, nr3=3, nr4=4, nr5=5)
