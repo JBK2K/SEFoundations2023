@@ -18,38 +18,41 @@ print(lottonr)
 print('Hello World')
 
 
-# def seed():
-#     for day, numbers in lottonr.items():
-#         main = Main(nr1=numbers['main'][0], nr2=numbers['main'][1],
-#                     nr3=numbers['main'][2], nr4=numbers['main'][3], nr5=numbers['main'][4])
-#         super = Super(nr1=numbers['super'][0], nr2=numbers['super'][1])
-#         main.save()
-#         super.save()
-#         lotto = Lottoresults(day=day, mainnr_id=main.id, supernr_id=super.id)
+def seed():
+    for day, numbers in lottonr.items():
+        main = Main(nr1=numbers['main'][0], nr2=numbers['main'][1],
+                    nr3=numbers['main'][2], nr4=numbers['main'][3], nr5=numbers['main'][4])
+        super = Super(nr1=numbers['super'][0], nr2=numbers['super'][1])
+        main.save()
+        super.save()
+        lotto = Lottoresults(day=day, mainnr_id=main.id, supernr_id=super.id)
 
-#         lotto.save()
-#         print('saved to backend')
-# seed()
-
-# for all entries in lottoresuls and related table main and super delete them
-def delete():
-    up = Lottoresults.query.all()
-    for item in up:
-        item.delete()
-    print('success!')
-
-    main = Main.query.all()
-    for item in main:
-        item.delete()
-    print('success!')
-
-    super = Super.query.all()
-    for item in super:
-        item.delete()
-    print('success!')
+        lotto.save()
+        print('saved to backend')
 
 
-delete()
+seed()
+
+
+# delete all entries in lottoresults
+# def delete():
+#     up = Lottoresults.query.all()
+#     for item in up:
+#         item.delete()
+#     print('success!')
+
+#     main = Main.query.all()
+#     for item in main:
+#         item.delete()
+#     print('success!')
+
+#     super = Super.query.all()
+#     for item in super:
+#         item.delete()
+#     print('success!')
+
+
+# delete()
 
 
 # def test():

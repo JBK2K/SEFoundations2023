@@ -1,5 +1,6 @@
 from .models import Lottoresults, Main, Super
-from flask import Blueprint, render_template, request, current_app
+from flask import Blueprint, render_template, request, current_app, redirect, url_for
+from app.simple_pages import routes
 blueprint = Blueprint('eurojackpot', __name__)
 
 
@@ -29,3 +30,14 @@ def eurojackpot(day):
         supernr=[superres.nr1, superres.nr2],
         day=dayresult.day
     )
+
+
+@blueprint.route('/run-seed')
+def run_seed():
+    if not Lottoresults.query.filter_by(day='monday').first():
+        import app.scripts.seeds
+        print('stored data to db')
+        return 'Database seed completed!'
+    else:
+        print('already in db')
+        return redirect(url_for('simple_pages.landingpage'))
