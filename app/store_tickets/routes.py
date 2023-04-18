@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from app.dynlottonr.models import Lottoresults, Main, Super, User, Usertickets
 from app.extensions.database import db
+from flask_login import login_required
 
 
 blueprint = Blueprint('ticket_form', __name__)
@@ -13,12 +14,14 @@ blueprint = Blueprint('ticket_form', __name__)
 
 
 @blueprint.get('/tickets')
+@login_required
 def get_tickets():
     print('get tickets')
     return render_template('user_ticket/usertickets.html')
 
 
 @blueprint.post('/tickets')
+@login_required
 def post_tickets():
     print('post tickets')
     # print the form data to the terminal

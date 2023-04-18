@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from app.config import *
 from app.extensions.database import db, migrate
 
+from app.extensions.authentication import login_manager
+
 from . import dynlottonr
 from . import simple_pages
 from . import store_tickets
@@ -33,6 +35,7 @@ def register_blueprints(app: Flask):
 def register_extensions(app: Flask):
     db.init_app(app)
     migrate.init_app(app, db, compare_type=True)
+    login_manager.init_app(app)
 
 
 if __name__ == '__main__':

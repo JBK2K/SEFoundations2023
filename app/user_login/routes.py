@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 from app.dynlottonr.models import Lottoresults, Main, Super, User, Usertickets
 from app.extensions.database import db, CRUDMixin
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user
 
 
 blueprint = Blueprint('user_login', __name__)
@@ -15,7 +17,18 @@ def get_login():
 @blueprint.post('/login')
 def post_login():
     print('logged in YYYYDDD')
-    return "user logged in"
+    print(request.form)
+
+    user = User.query.filter_by(mail=request.form['email']).first()
+
+    if not user or not check_password_hash(user.password, request.form['password']):
+        print('wrong email or password')
+        return render_template('logsignup/login.html', error='Wrong email or password')
+    else:
+        print('success!')
+        # reroute to other page.
+    login_user(user)
+    return redirect(url_for('ticket_form.get_tickets'))
 
 
 @blueprint.get('/logout')
@@ -38,15 +51,18 @@ def post_register():
     new_user = User(
         name=request.form['username'],
         mail=request.form['email'],
-        password=request.form['password']
-    )
+        password=generate_password_hash(request.form.get('password')))
 
     # check if user already exists
-    user = User.query.filter_by(name=request.form['username']).first()
+    user = User.query.filter_by(mail=request.form['email']).first()
     if user:
         print('user already exists')
-        return redirect(url_for('user_login.get_login'))
+        # make alert that user exists already
+        return render_template('logsignup/signup.html', error='The email address is already registered.')
 
-    new_user.save()
-    print('success!')
-    return 'User created'
+    else:
+        new_user.save()
+        print('success!')
+
+        login_user(new_user)
+        return redirect(url_for('ticket_form.get_tickets'))

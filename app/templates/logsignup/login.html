@@ -6,6 +6,7 @@ block head %} {{ super() }}
 />
 {% endblock %} {% block body %}
 <div class="login-screen">
+  <p style="color: tomato">{{ error }}</p>
   <div class="app-title">
     <img
       class="logo2"
@@ -22,6 +23,7 @@ block head %} {{ super() }}
           name="email"
           placeholder="Email"
           id="login-name"
+          required
         />
         <label class="login-field-icon fui-user" for="login-name"></label>
       </div>
@@ -32,6 +34,7 @@ block head %} {{ super() }}
           name="password"
           placeholder="Password"
           id="login-pass"
+          required
         />
         <label class="" for=""></label>
       </div>

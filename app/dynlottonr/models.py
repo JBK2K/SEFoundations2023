@@ -3,6 +3,8 @@ from datetime import datetime
 
 from app.extensions.database import db, CRUDMixin
 
+from flask_login import UserMixin
+
 
 # User tickets table
 class Usertickets(db.Model, CRUDMixin):
@@ -15,7 +17,7 @@ class Usertickets(db.Model, CRUDMixin):
 # # User data table
 
 
-class User(db.Model, CRUDMixin):
+class User(db.Model, CRUDMixin, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     mail = db.Column(db.String(80))
