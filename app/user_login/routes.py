@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from app.dynlottonr.models import Lottoresults, Main, Super, User, Usertickets
 from app.extensions.database import db, CRUDMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user
+from flask_login import login_user, logout_user
 
 
 blueprint = Blueprint('user_login', __name__)
@@ -33,8 +33,9 @@ def post_login():
 
 @blueprint.get('/logout')
 def logout():
-    return 'User logged out'
-
+    logout_user()
+    print('log out successful')
+    return redirect(url_for('user_login.get_login'))
 # register ab hier
 
 

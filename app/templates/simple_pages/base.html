@@ -39,6 +39,7 @@
               >Log in</a
             >
           </li>
+          <!-- logic log in log out. -->
         </ul>
 
         <div class="hamburger">
@@ -49,6 +50,15 @@
       </nav>
     </header>
     {% block body %} {% endblock %}
+    <footer style="text-align: center; font-size: 1.2em">
+      <hr />
+      {% if current_user.is_authenticated %}
+      <small>
+        Logged in as {{current_user.mail}}
+        <a href="{{ url_for('user_login.logout') }}">Logout</a>
+      </small>
+      {% endif %}
+    </footer>
   </body>
   <script src="{{ url_for('static', filename='burger.js') }}"></script>
 </html>

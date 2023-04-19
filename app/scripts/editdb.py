@@ -20,12 +20,12 @@ print(lottonr)
 print('Hello World')
 
 
-hashed_password = 'pbkdf2:sha256:260000$qDhowSZPOtKIyHEg$f39726e0d6a1f149de76355bf3f583c760dbce1e82927ac1ccb6a5c8a65123c0'
-password_to_check = 'super secret'
+# hashed_password = 'pbkdf2:sha256:260000$qDhowSZPOtKIyHEg$f39726e0d6a1f149de76355bf3f583c760dbce1e82927ac1ccb6a5c8a65123c0'
+# password_to_check = 'super secret'
 
-is_password_valid = check_password_hash(hashed_password, 'super secret')
+# is_password_valid = check_password_hash(hashed_password, 'super secret')
 
-print(is_password_valid)
+# print(is_password_valid)
 # True / False
 
 
@@ -45,7 +45,7 @@ print(is_password_valid)
 # seed()
 
 
-# delete all entries in lottoresults
+# # delete all entries in lottoresults
 # def delete():
 #     up = Lottoresults.query.all()
 #     for item in up:
@@ -89,6 +89,36 @@ print(is_password_valid)
 # delete_x()
 
 
+def x_delete():
+    one = Lottoresults.query.all()
+    for item in one:
+        item.delete()
+    # one.delete()
+    print(one)
+    two = Main.query.all()
+    for item in two:
+        item.delete()
+    # two.delete()
+    print(two)
+    three = Super.query.all()
+    for item in three:
+        item.delete()
+    # three.delete()
+    print(three)
+    four = User.query.all()
+    for item in four:
+        item.delete()
+    # four.delete()
+    print(four)
+    five = Usertickets.query.all()
+    for item in five:
+        item.delete()
+    # five.delete()
+    print(five)
+    print('success!')
+
+
+x_delete()
 # def delete_alluser():
 #     up = User.query.all()
 #     print(up)

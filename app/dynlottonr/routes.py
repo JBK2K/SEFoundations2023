@@ -1,6 +1,8 @@
 from .models import Lottoresults, Main, Super
 from flask import Blueprint, render_template, request, current_app, redirect, url_for
 from app.simple_pages import routes
+
+
 blueprint = Blueprint('eurojackpot', __name__)
 
 
