@@ -78,30 +78,3 @@ def post_tickets():
     user_new.save()
     print('saved to backend')
     return redirect(url_for('ticket_form.get_tickets'))
-
-
-@blueprint.put('/tickets/<int:id>')
-@login_required
-def update_ticket(id):
-    # retrieve the existing ticket by id
-    existing_ticket = Usertickets.query.filter_by(
-        id=id, user_id=current_user.id).first()
-
-    # check if the ticket exists
-    if not existing_ticket:
-        abort(404)
-
-    # update the ticket with the new form data
-    existing_ticket.playday = request.form['playday']
-    existing_ticket.mainnr.nr1 = request.form['main1']
-    existing_ticket.mainnr.nr2 = request.form['main2']
-    existing_ticket.mainnr.nr3 = request.form['main3']
-    existing_ticket.mainnr.nr4 = request.form['main4']
-    existing_ticket.mainnr.nr5 = request.form['main5']
-    existing_ticket.supernr.nr1 = request.form['super1']
-    existing_ticket.supernr.nr2 = request.form['super2']
-
-    # commit the changes to the database
-
-    print('updated ticket')
-    # return redirect(url_for('ticket_form.get_tickets'))

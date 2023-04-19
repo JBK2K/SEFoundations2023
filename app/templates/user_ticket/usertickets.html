@@ -90,7 +90,6 @@ block head %} {{ super() }}
 {% if tickets %}
 <div class="userticketstored" >
   <h2>Your Tickets</h2>
-  <form id="form-{{ ticket.id }}">
   {% for ticket in tickets %}
 
   <p>{{ ticket.mainnr_id }}</p>
@@ -186,7 +185,6 @@ block head %} {{ super() }}
     required
     value="{% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}{{ s.nr2 }}{% endfor %}"
     /><br />
-  </form>
     
     <button type="submit" formaction="{{ url_for }}">Delete</button>
 
