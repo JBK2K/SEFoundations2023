@@ -21,7 +21,7 @@ class User(db.Model, CRUDMixin, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     mail = db.Column(db.String(80))
-    password = db.Column(db.String(6))
+    password = db.Column(db.String(1000))
     date = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
 
