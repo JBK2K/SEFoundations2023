@@ -99,9 +99,10 @@ def delete_tickets():
     super = Super.query.filter_by(id=up.supernr_id).first()
     print(main.id, main.nr1, main.nr2, main.nr3, main.nr4, main.nr5)
     print(super.id, super.nr1, super.nr2)
+
+    up.delete()
     main.delete()
     super.delete()
-    up.delete()
     print('deleted from backend')
 
     return redirect(url_for('ticket_form.get_tickets'))
