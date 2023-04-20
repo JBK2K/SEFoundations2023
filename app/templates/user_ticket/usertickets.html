@@ -85,6 +85,7 @@ block head %} {{ super() }}
 
   <input type="submit" value="Submit" />
 </form>
+<script src="/static/ticketvalidation.js"></script>
 
 {% if tickets %}
 <div class="userticketstored" >
@@ -194,15 +195,10 @@ block head %} {{ super() }}
   
   </form>
 
-  
-  
-  
-
   {% endfor %} {% else %}
   <div class="no-tickets">
     <h2>You have no tickets</h2>
   </div>
   {% endif %}
 </div>
-<script src="/static/ticketvalidation.js"></script>
 {% endblock %}
