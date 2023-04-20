@@ -1,45 +1,39 @@
+{% extends 'simple_pages/base.html' %} {% block title %}HOME{% endblock %} {%
+block head %} {{ super() }}
+<link
+  href="{{ url_for('static', filename='css/home.css') }}"
+  rel="stylesheet"
+/>
+{% endblock %} {% block body %}
 
-{% extends 'simple_pages/base.html' %}
-
-{% block title %}HOME{% endblock %}
-{% block head %}
-  {{ super() }}
-  <link href="{{ url_for('static', filename='css/home.css') }}" rel="stylesheet" />
-{% endblock %}
-
-{% block body %}
-
- <h1>Welcome to 24.</h1>
-    <h2>You place to store your lottery tickets or generate your own.</h2>
-    <div class="langrid">
-      <div class="lottotext">
-        <h3>Generate your own lottery ticket</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-          voluptates, quod, quia, voluptate quae voluptatem quibusdam voluptatum
-          quos quidem quas nesciunt. Quisquam, quae. Quisquam voluptates, quod,
-          quia, voluptate quae voluptatem quibusdam voluptatum quos quidem quas
-          nesciunt. Quisquam, quae.
-        </p>
-        <a class="bottonlink" href="generate.html">Generate</a>
-      </div>
-      <div class="lanbox">
-        <h3>Store your lottery ticket</h3>
-        <img
-          class="lottoimg"
-          src="https://www.augsburger-allgemeine.de/img/bayern/crop63425816/4296423656-cv16_9-w1200/Lotto.jpg"
-          alt="lottobackground"
-        />
-
-        <a class="bottonlink" href="store.html">Store</a>
-      </div>
-    </div>
-    <div class="YT">
-      <h4>Watch our YT</h4>
-      <iframe
-        class="ytframe"
-        src="https://www.youtube.com/embed/vaU8BAoVIj8?autoplay=1&mute=1"
-      >
-      </iframe>
-    </div>
+<h1>Welcome to 24.</h1>
+<h2>You place to store your lottery tickets or generate your own.</h2>
+<div class="langrid">
+  <div class="lottotext">
+    <h3>Generate your own lottery ticket</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+      voluptates, quod, quia, voluptate quae voluptatem quibusdam voluptatum
+      quos quidem quas nesciunt. Quisquam, quae. Quisquam voluptates, quod,
+      quia, voluptate quae voluptatem quibusdam voluptatum quos quidem quas
+      nesciunt. Quisquam, quae.
+    </p>
+  </div>
+  <div class="lanbox">
+    <h3>Store your lottery ticket</h3>
+    <img
+      class="lottoimg"
+      src="https://www.augsburger-allgemeine.de/img/bayern/crop63425816/4296423656-cv16_9-w1200/Lotto.jpg"
+      alt="lottobackground"
+    />
+  </div>
+</div>
+<div class="YT">
+  <h4>Watch our YT</h4>
+  <iframe
+    class="ytframe"
+    src="https://www.youtube.com/embed/vaU8BAoVIj8?autoplay=1&mute=1"
+  >
+  </iframe>
+</div>
 {% endblock %}
