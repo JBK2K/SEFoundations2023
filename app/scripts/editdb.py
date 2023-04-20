@@ -8,16 +8,16 @@ if __name__ == '__main__':
     app = create_app()
     app.app_context().push()
 
-lottonr = {
-    'monday': {'main': [3, 8, 24, 21, 22], 'super': [1, 6]},
-    'tuesday': {'main': [3, 8, 24, 19, 21], 'super': [1, 9]},
-    'wednesday': {'main': [3, 4, 8, 19, 20], 'super': [5, 6]},
-    'thursday': {'main': [2, 7, 17, 14, 20], 'super': [2, 9]},
-    'friday': {'main': [1, 7, 12, 15, 20], 'super': [2, 10]},
-    'saturday': {'main': [3, 7, 16, 19, 29], 'super': [9, 12]},
-    'sunday': {'main': [3, 7, 16, 19, 29], 'super': [9, 12]}, }
-print(lottonr)
-print('Hello World')
+# lottonr = {
+#     'monday': {'main': [3, 8, 24, 21, 22], 'super': [1, 6]},
+#     'tuesday': {'main': [3, 8, 24, 19, 21], 'super': [1, 9]},
+#     'wednesday': {'main': [3, 4, 8, 19, 20], 'super': [5, 6]},
+#     'thursday': {'main': [2, 7, 17, 14, 20], 'super': [2, 9]},
+#     'friday': {'main': [1, 7, 12, 15, 20], 'super': [2, 10]},
+#     'saturday': {'main': [3, 7, 16, 19, 29], 'super': [9, 12]},
+#     'sunday': {'main': [3, 7, 16, 19, 29], 'super': [9, 12]}, }
+# print(lottonr)
+# print('Hello World')
 
 
 # hashed_password = 'pbkdf2:sha256:260000$qDhowSZPOtKIyHEg$f39726e0d6a1f149de76355bf3f583c760dbce1e82927ac1ccb6a5c8a65123c0'
@@ -89,36 +89,36 @@ print('Hello World')
 # delete_x()
 
 
-def x_delete():
-    one = Lottoresults.query.all()
-    for item in one:
-        item.delete()
-    # one.delete()
-    print(one)
-    two = Main.query.all()
-    for item in two:
-        item.delete()
-    # two.delete()
-    print(two)
-    three = Super.query.all()
-    for item in three:
-        item.delete()
-    # three.delete()
-    print(three)
-    four = User.query.all()
-    for item in four:
-        item.delete()
-    # four.delete()
-    print(four)
-    five = Usertickets.query.all()
-    for item in five:
-        item.delete()
-    # five.delete()
-    print(five)
-    print('success!')
+# def x_delete():
+#     one = Lottoresults.query.all()
+#     for item in one:
+#         item.delete()
+#     # one.delete()
+#     print(one)
+#     two = Main.query.all()
+#     for item in two:
+#         item.delete()
+#     # two.delete()
+#     print(two)
+#     three = Super.query.all()
+#     for item in three:
+#         item.delete()
+#     # three.delete()
+#     print(three)
+#     four = User.query.all()
+#     for item in four:
+#         item.delete()
+#     # four.delete()
+#     print(four)
+#     five = Usertickets.query.all()
+#     for item in five:
+#         item.delete()
+#     # five.delete()
+#     print(five)
+#     print('success!')
 
 
-x_delete()
+# x_delete()
 # def delete_alluser():
 #     up = User.query.all()
 #     print(up)
@@ -129,20 +129,23 @@ x_delete()
 # delete_alluser()
 
 
-# def test():
-#     playday = 'highday'
-#     main = Main(nr1=1, nr2=2, nr3=3, nr4=4, nr5=5)
-#     main.save()
-#     super = Super(nr1=1, nr2=2)
-#     super.save()
-#     User = Usertickets(playday=playday, mainnr_id=main.id,
-#                        supernr_id=super.id)
+# function with arg  usertickets.id
+def delete_userticket(id):
+    up = Usertickets.query.filter_by(id=id).first()
 
-#     print('success!')
-#     User.save()
+    print(up)
+    print(up.id, up.user_id, up.playday, up.mainnr_id, up.supernr_id)
+    # delete main and super id with up.mainnr_id and up.supernr_id
+    main = Main.query.filter_by(id=up.mainnr_id).first()
+    super = Super.query.filter_by(id=up.supernr_id).first()
+    print(main.id, main.nr1, main.nr2, main.nr3, main.nr4, main.nr5)
+    print(super.id, super.nr1, super.nr2)
+    main.delete()
+    super.delete()
+    up.delete()
 
 
-# test()
+delete_userticket(1)
 
 # test()
 

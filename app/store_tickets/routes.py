@@ -19,6 +19,7 @@ def lotto():
     return render_template('lottonum/eurojackpot.html', lottonr_paginated=lottonr_paginated)
 
 
+@blueprint.route('/tickets')
 @blueprint.get('/tickets')
 @login_required
 def get_tickets():
@@ -77,4 +78,76 @@ def post_tickets():
                            supernr_id=super.id, user_id=user_atm)
     user_new.save()
     print('saved to backend')
+    return redirect(url_for('ticket_form.get_tickets'))
+
+
+@blueprint.post('/tickets/delete')
+@login_required
+def delete_tickets():
+    print("Delete tickets")
+    mainnr_id = request.form['mainnr_id']
+    supernr_id = request.form['supernr_id']
+    ticket_id = request.form['ticket_id']
+
+    print(mainnr_id, supernr_id, ticket_id)
+    up = Usertickets.query.filter_by(id=ticket_id).first()
+
+    print(up)
+    print(up.id, up.user_id, up.playday, up.mainnr_id, up.supernr_id)
+    # delete main and super id with up.mainnr_id and up.supernr_id
+    main = Main.query.filter_by(id=up.mainnr_id).first()
+    super = Super.query.filter_by(id=up.supernr_id).first()
+    print(main.id, main.nr1, main.nr2, main.nr3, main.nr4, main.nr5)
+    print(super.id, super.nr1, super.nr2)
+    main.delete()
+    super.delete()
+    up.delete()
+    print('deleted from backend')
+
+    return redirect(url_for('ticket_form.get_tickets'))
+
+# create an edit function that looks like the delete function
+
+
+@blueprint.post('/tickets/edit')
+@login_required
+def edit_tickets():
+    print('edit tickets')
+    playday = request.form['playday']
+    mainnr_id = request.form['mainnr_id']
+    supernr_id = request.form['supernr_id']
+    ticket_id = request.form['ticket_id']
+    mainr_1 = request.form['main1']
+    mainr_2 = request.form['main2']
+    mainr_3 = request.form['main3']
+    mainr_4 = request.form['main4']
+    mainr_5 = request.form['main5']
+    superr_1 = request.form['super1']
+    superr_2 = request.form['super2']
+    print(playday)
+    print(mainnr_id, supernr_id, ticket_id)
+    print(mainr_1, mainr_2, mainr_3, mainr_4, mainr_5)
+    print(superr_1, superr_2)
+
+    up = Usertickets.query.filter_by(id=ticket_id).first()
+    # updated playday
+    up.playday = playday
+    # update main and super table based on mainnr_id and supernr_id
+    main = Main.query.filter_by(id=up.mainnr_id).first()
+    super = Super.query.filter_by(id=up.supernr_id).first()
+
+    main.nr1 = mainr_1
+    main.nr2 = mainr_2
+    main.nr3 = mainr_3
+    main.nr4 = mainr_4
+    main.nr5 = mainr_5
+    super.nr1 = superr_1
+    super.nr2 = superr_2
+
+    main.save()
+    super.save()
+    up.save()
+
+    print('success!')
+
     return redirect(url_for('ticket_form.get_tickets'))

@@ -33,6 +33,15 @@
   background-color: rgb(48, 130, 73);
   /* end middle flex */
 }
+.userticketstored > form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 3px;
+  background-color: rgb(48, 130, 73);
+  /* end middle flex */
+}
 
 .userticketstored > input {
   width: 20%;

@@ -97,101 +97,108 @@ block head %} {{ super() }}
   <p>{{ ticket.user_id }}</p>
   <p>{{ticket.id}}</p>
 
-<input type="hidden" name="mainnr_id" value="{{ ticket.mainnr_id }}">
-<input type="hidden" name="supernr_id" value="{{ ticket.supernr_id }}">
-<input type="hidden" name="user_id" value="{{ ticket.user_id }}">
-<input type="hidden" name="ticket_id" value="{{ ticket.id }}">
+  <form method="POST" action="{{ url_for('ticket_form.edit_tickets') }}">
+    <input type="hidden" name="mainnr_id" value="{{ ticket.mainnr_id }}">
+    <input type="hidden" name="supernr_id" value="{{ ticket.supernr_id }}">
+    <input type="hidden" name="user_id" value="{{ ticket.user_id }}">
+    <input type="hidden" name="ticket_id" value="{{ ticket.id }}">
+  
+    <select id="playday" name="playday">
+      <option value="Monday" {% if ticket.playday == "Monday" %}selected{% endif %}>Monday</option>
+      <option value="Tuesday" {% if ticket.playday == "Tuesday" %}selected{% endif %}>Tuesday</option>
+      <option value="Wednesday" {% if ticket.playday == "Wednesday" %}selected{% endif %}>Wednesday</option>
+      <option value="Thursday" {% if ticket.playday == "Thursday" %}selected{% endif %}>Thursday</option>
+      <option value="Friday" {% if ticket.playday == "Friday" %}selected{% endif %}>Friday</option>
+      <option value="Saturday" {% if ticket.playday == "Saturday" %}selected{% endif %}>Saturday</option>
+      <option value="Sunday" {% if ticket.playday == "Sunday" %}selected{% endif %}>Sunday</option>
+    </select>
+  
+    {% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}
+      Main: nr 1 {{ m.nr1 }} nr2 {{ m.nr2 }} nr3 {{ m.nr3 }} nr4 {{ m.nr4 }} nr5 {{ m.nr5 }}
+      {% endfor %}
+  
+    {% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}
+      Super: nr1 {{ s.nr1 }} nr2 {{ s.nr2 }}
+      {% endfor %}
+      <label for="main-numbers">Main Numbers:</label><br />
+      <input
+      type="number"
+      id="main1"
+      name="main1"
+      min="1"
+      max="50"
+      required
+      value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr1 }}{% endfor %}"
+      /><br />
+      <input
+      type="number"
+      id="main2"
+      name="main2"
+      min="1"
+      max="50"
+      required
+      value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr2 }}{% endfor %}"
+      /><br />
+      <input
+      type="number"
+      id="main3"
+      name="main3"
+      min="1"
+      max="50"
+      required
+      value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr3 }}{% endfor %}"
+      /><br />
+      <input
+      type="number"
+      id="main4"
+      name="main4"
+      min="1"
+      max="50"
+      required
+      value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr4 }}{% endfor %}"
+      /><br />
+      <input
+      type="number"
+      id="main5"
+      name="main5"
+      min="1"
+      max="50"
+      required
+      value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr5 }}{% endfor %}"
+      /><br />
+      
+      <label for="super-numbers">Super Numbers:</label><br />
+      <input
+      type="number"
+      id="super1"
+      name="super1"
+      min="1"
+      max="12"
+      required
+      value="{% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}{{ s.nr1 }}{% endfor %}"
+      /><br />
+      <input
+      type="number"
+      id="super2"
+      name="super2"
+      min="1"
+      max="12"
+      required
+      value="{% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}{{ s.nr2 }}{% endfor %}"
+      /><br />
+      
+      <button type="submit" value="Submit">Update</button>
+  </form>
 
-  <select id="playday" name="playday">
-    <option value="Monday" {% if ticket.playday == "Monday" %}selected{% endif %}>Monday</option>
-    <option value="Tuesday" {% if ticket.playday == "Tuesday" %}selected{% endif %}>Tuesday</option>
-    <option value="Wednesday" {% if ticket.playday == "Wednesday" %}selected{% endif %}>Wednesday</option>
-    <option value="Thursday" {% if ticket.playday == "Thursday" %}selected{% endif %}>Thursday</option>
-    <option value="Friday" {% if ticket.playday == "Friday" %}selected{% endif %}>Friday</option>
-    <option value="Saturday" {% if ticket.playday == "Saturday" %}selected{% endif %}>Saturday</option>
-    <option value="Sunday" {% if ticket.playday == "Sunday" %}selected{% endif %}>Sunday</option>
-  </select>
-
-  {% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}
-    Main: nr 1{{ m.nr1 }} nr2 {{ m.nr2 }} nr3 {{ m.nr3 }} nr4 {{ m.nr4 }} nr5 {{ m.nr5 }}
-    {% endfor %}
-
-  {% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}
-    Super: nr1 {{ s.nr1 }} nr2 {{ s.nr2 }}
-    {% endfor %}
-    <label for="main-numbers">Main Numbers:</label><br />
-    <input
-    type="number"
-    id="main1"
-    name="main1"
-    min="1"
-    max="50"
-    required
-    value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr1 }}{% endfor %}"
-    /><br />
-    <input
-    type="number"
-    id="main2"
-    name="main2"
-    min="1"
-    max="50"
-    required
-    value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr2 }}{% endfor %}"
-    /><br />
-    <input
-    type="number"
-    id="main3"
-    name="main3"
-    min="1"
-    max="50"
-    required
-    value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr3 }}{% endfor %}"
-    /><br />
-    <input
-    type="number"
-    id="main4"
-    name="main4"
-    min="1"
-    max="50"
-    required
-    value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr4 }}{% endfor %}"
-    /><br />
-    <input
-    type="number"
-    id="main5"
-    name="main5"
-    min="1"
-    max="50"
-    required
-    value="{% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}{{ m.nr5 }}{% endfor %}"
-    /><br />
-    
-    <label for="super-numbers">Super Numbers:</label><br />
-    <input
-    type="number"
-    id="super1"
-    name="super1"
-    min="1"
-    max="12"
-    required
-    value="{% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}{{ s.nr1 }}{% endfor %}"
-    /><br />
-    <input
-    type="number"
-    id="super2"
-    name="super2"
-    min="1"
-    max="12"
-    required
-    value="{% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}{{ s.nr2 }}{% endfor %}"
-    /><br />
-    
-    <button type="submit" formaction="{{ url_for }}">Delete</button>
-
-    <button type="submit" formaction="{{ url_for}}">Update</button>
-
-
-
+  <form method="POST" action="{{ url_for('ticket_form.delete_tickets') }}">
+    <input type="hidden" name="mainnr_id" value="{{ ticket.mainnr_id }}">
+    <input type="hidden" name="supernr_id" value="{{ ticket.supernr_id }}">
+    <input type="hidden" name="user_id" value="{{ ticket.user_id }}">
+    <input type="hidden" name="ticket_id" value="{{ ticket.id }}">
+   
+    <button type="submit" value="Submit">Delete</button>
+  
+  </form>
   
 
   {% endfor %} {% else %}
