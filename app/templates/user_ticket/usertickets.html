@@ -85,17 +85,12 @@ block head %} {{ super() }}
 
   <input type="submit" value="Submit" />
 </form>
-<script src="/static/ticketvalidation.js"></script>
 
 {% if tickets %}
 <div class="userticketstored" >
   <h2>Your Tickets</h2>
   {% for ticket in tickets %}
 
-  <p>{{ ticket.mainnr_id }}</p>
-  <p>{{ ticket.supernr_id }}</p>
-  <p>{{ ticket.user_id }}</p>
-  <p>{{ticket.id}}</p>
 
   <form method="POST" action="{{ url_for('ticket_form.edit_tickets') }}">
     <input type="hidden" name="mainnr_id" value="{{ ticket.mainnr_id }}">
@@ -112,14 +107,14 @@ block head %} {{ super() }}
       <option value="Saturday" {% if ticket.playday == "Saturday" %}selected{% endif %}>Saturday</option>
       <option value="Sunday" {% if ticket.playday == "Sunday" %}selected{% endif %}>Sunday</option>
     </select>
-  
+<!--   
     {% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}
       Main: nr 1 {{ m.nr1 }} nr2 {{ m.nr2 }} nr3 {{ m.nr3 }} nr4 {{ m.nr4 }} nr5 {{ m.nr5 }}
       {% endfor %}
   
     {% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}
       Super: nr1 {{ s.nr1 }} nr2 {{ s.nr2 }}
-      {% endfor %}
+      {% endfor %} -->
       <label for="main-numbers">Main Numbers:</label><br />
       <input
       type="number"
@@ -189,7 +184,6 @@ block head %} {{ super() }}
       
       <button type="submit" value="Submit">Update</button>
   </form>
-
   <form method="POST" action="{{ url_for('ticket_form.delete_tickets') }}">
     <input type="hidden" name="mainnr_id" value="{{ ticket.mainnr_id }}">
     <input type="hidden" name="supernr_id" value="{{ ticket.supernr_id }}">
@@ -199,6 +193,9 @@ block head %} {{ super() }}
     <button type="submit" value="Submit">Delete</button>
   
   </form>
+
+  
+  
   
 
   {% endfor %} {% else %}
@@ -207,4 +204,5 @@ block head %} {{ super() }}
   </div>
   {% endif %}
 </div>
+<script src="/static/ticketvalidation.js"></script>
 {% endblock %}
