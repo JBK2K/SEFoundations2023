@@ -108,14 +108,7 @@ block head %} {{ super() }}
       <option value="Saturday" {% if ticket.playday == "Saturday" %}selected{% endif %}>Saturday</option>
       <option value="Sunday" {% if ticket.playday == "Sunday" %}selected{% endif %}>Sunday</option>
     </select>
-<!--   
-    {% for m in Main.query.filter_by(id=ticket.mainnr_id).all() %}
-      Main: nr 1 {{ m.nr1 }} nr2 {{ m.nr2 }} nr3 {{ m.nr3 }} nr4 {{ m.nr4 }} nr5 {{ m.nr5 }}
-      {% endfor %}
-  
-    {% for s in Super.query.filter_by(id=ticket.supernr_id).all() %}
-      Super: nr1 {{ s.nr1 }} nr2 {{ s.nr2 }}
-      {% endfor %} -->
+
       <label for="main-numbers">Main Numbers:</label><br />
       <input
       type="number"

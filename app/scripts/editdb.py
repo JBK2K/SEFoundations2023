@@ -130,22 +130,6 @@ if __name__ == '__main__':
 
 
 # function with arg  usertickets.id
-def delete_userticket(id):
-    up = Usertickets.query.filter_by(id=id).first()
-
-    print(up)
-    print(up.id, up.user_id, up.playday, up.mainnr_id, up.supernr_id)
-    # delete main and super id with up.mainnr_id and up.supernr_id
-    main = Main.query.filter_by(id=up.mainnr_id).first()
-    super = Super.query.filter_by(id=up.supernr_id).first()
-    print(main.id, main.nr1, main.nr2, main.nr3, main.nr4, main.nr5)
-    print(super.id, super.nr1, super.nr2)
-    main.delete()
-    super.delete()
-    up.delete()
-
-
-delete_userticket(1)
 
 # test()
 

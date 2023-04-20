@@ -6,13 +6,6 @@ blueprint = Blueprint('simple_pages', __name__)
 def landingpage():
     return render_template('simple_pages/home.html')
 
-# if back to main page
-# @blueprint.route('/home')
-# def home():
-#     return redirect('http://127.0.0.1:5000/')
-
-# route only login
-
 
 @blueprint.route('/about')
 def about():
