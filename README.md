@@ -3,9 +3,8 @@
 
 # MVP
 
-be able to store your lotto tickets in your profile either eurojackpot
-edit it and save it
-later be able to view edit or delete ticket
+be able to store your lotto tickets in your profile create eurojackpot
+ticket and save it andlater be able to view edit or delete ticket
 
 1. Running Fullstack app
 2. Log In
