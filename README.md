@@ -7,10 +7,9 @@ be able to store your lotto tickets in your profile create eurojackpot
 ticket and save it andlater be able to view edit or delete ticket
 
 1. Running Fullstack app
-2. Log In
-3. store your tickets / have ticket generated
-4. save tickets
-5. Look through your tickets and edit or delete them
+2. Log In / Sign up 
+3. create ticket and save it.
+4. Look through your tickets and edit or delete them
 
 TECHSTACK I used for my webapp:
 
